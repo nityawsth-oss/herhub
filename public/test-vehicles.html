@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HerScan 360° AI Camera — Test Vehicle Number Plates & Barcodes</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background-color: #0B071E; color: #FFFFFF; padding: 24px; text-align: center; }
+    h1 { font-size: 1.8rem; font-weight: 900; margin-bottom: 8px; color: #A5B4FC; }
+    p { font-size: 0.9rem; color: #94A3B8; margin-bottom: 24px; }
+    .grid { display: flex; flex-direction: column; gap: 24px; max-width: 600px; margin: 0 auto; }
+    .card { background: #181136; border-radius: 20px; padding: 20px; border: 2px solid #2D2255; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+    .card.safe { border-color: #10B981; }
+    .card.danger { border-color: #EF4444; }
+    .badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; }
+    .badge.safe { background: rgba(16,185,129,0.2); color: #10B981; border: 1px solid #10B981; }
+    .badge.danger { background: rgba(239,68,68,0.2); color: #EF4444; border: 1px solid #EF4444; }
+    
+    /* Authentic Indian High Security Number Plate (HSRP) Graphic */
+    .plate {
+      display: inline-flex;
+      align-items: center;
+      background: #FFFFFF;
+      color: #000000;
+      border: 3px solid #000000;
+      border-radius: 8px;
+      padding: 6px 16px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+      margin: 12px 0;
+      letter-spacing: 2px;
+    }
+    .plate.yellow {
+      background: #FFD200;
+      color: #000000;
+    }
+    .plate.green {
+      background: #028A0F;
+      color: #FFFFFF;
+      border-color: #FFFFFF;
+    }
+    .ind-badge {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-right: 12px;
+      padding-right: 8px;
+      border-right: 2px solid #CBD5E1;
+      font-size: 0.65rem;
+      font-weight: 900;
+      color: #003399;
+    }
+    .chakra {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 2px solid #003399;
+      margin-bottom: 2px;
+    }
+    .plate-number {
+      font-size: 2.2rem;
+      font-weight: 900;
+      font-family: 'Arial Black', Impact, sans-serif;
+    }
+    .qr-box {
+      margin: 12px auto;
+      background: #FFFFFF;
+      padding: 10px;
+      display: inline-block;
+      border-radius: 12px;
+    }
+    .qr-box img { display: block; width: 140px; height: 140px; }
+    .details { font-size: 0.8rem; color: #CBD5E1; line-height: 1.6; margin-top: 8px; }
+  </style>
+</head>
+<body>
+
+  <h1>🚗 HerScan 360° AI Camera Test Cards</h1>
+  <p>Hold this screen in front of your laptop/phone webcam to test real-time vehicle scanning and safety audit!</p>
+
+  <div class="grid">
+
+    <!-- VEHICLE 1: SAFE UBER -->
+    <div class="card safe">
+      <span class="badge safe">✓ Verified Safe Ride</span>
+      <h3>Uber Go — Swift Dzire (White)</h3>
+      <div class="plate yellow">
+        <div class="ind-badge">
+          <div class="chakra"></div>
+          IND
+        </div>
+        <div class="plate-number">UP 65 BT 4421</div>
+      </div>
+      <div class="qr-box">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=UP65BT4421_VERIFIED_UBER_SAFE" alt="QR UP 65 BT 4421">
+      </div>
+      <div class="details">
+        <strong>Driver:</strong> Ramesh Kumar (4.9★ • 3,420 Rides)<br>
+        <strong>Police Verification:</strong> Cleared (Axis Police API)<br>
+        <strong>Child Lock:</strong> Normal (Unlocked) • <strong>Tint:</strong> 78% VLT (Safe)
+      </div>
+    </div>
+
+    <!-- VEHICLE 2: FLAGGED DANGEROUS VAN -->
+    <div class="card danger">
+      <span class="badge danger">⚠️ High Hazard — Do Not Board</span>
+      <h3>Commercial Private Van (Suspicious)</h3>
+      <div class="plate">
+        <div class="ind-badge">
+          <div class="chakra"></div>
+          IND
+        </div>
+        <div class="plate-number" style="color: #990000;">DL 1Z B 8890</div>
+      </div>
+      <div class="qr-box">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=DL1ZB8890_DANGER_CHILDLOCK_HEAVY_TINT" alt="QR DL 1Z B 8890">
+      </div>
+      <div class="details">
+        <strong style="color: #EF4444;">Child Lock: ENGAGED ON REAR DOORS</strong><br>
+        <strong>Window Tint:</strong> 15% VLT (Heavy Illegal Dark Film)<br>
+        <strong>Driver:</strong> Unverified Operator (No Police Clearance)
+      </div>
+    </div>
+
+    <!-- VEHICLE 3: VERIFIED AUTO -->
+    <div class="card safe">
+      <span class="badge safe">✓ Verified City Auto</span>
+      <h3>Varanasi Green Auto Rickshaw</h3>
+      <div class="plate green">
+        <div class="ind-badge" style="color: #FFFFFF; border-color: #FFFFFF;">
+          <div class="chakra" style="border-color: #FFFFFF;"></div>
+          IND
+        </div>
+        <div class="plate-number">UP 65 AT 1234</div>
+      </div>
+      <div class="qr-box">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=UP65AT1234_VARANASI_CITY_AUTO_SAFE" alt="QR UP 65 AT 1234">
+      </div>
+      <div class="details">
+        <strong>Driver:</strong> Manoj Tiwari (Varanasi City Permit)<br>
+        <strong>Child Lock:</strong> Open Auto Frame (Safe)<br>
+        <strong>Visibility:</strong> 100% Open Air
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

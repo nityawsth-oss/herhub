@@ -1,38 +1,1382 @@
-.App {
-  text-align: center;
+/* ========================================================
+   HERHUB — Exact Emergent SafeHer Hub UI
+   Clean Light Theme with Purple (#6C5CE7) & Pink Accents
+   ======================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --primary: #6355E6;
+  --primary-hover: #5244D4;
+  --primary-light: #F0EDFE;
+  --text-dark: #12102B;
+  --text-muted: #5E5B7A;
+  --text-light: #8E8BA7;
+  --bg-page: #FDFDFE;
+  --bg-card: #FFFFFF;
+  --border-light: #E9E7F2;
+  --purple-dark-banner: #140E2D;
+  --pink-accent: #E03577;
+  --red-accent: #EF4444;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-page);
+  color: var(--text-dark);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ================= Navbar ================= */
+.exact-nav {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-light);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 14px 0;
+}
+
+.brand-badge-logo {
+  background: #140E2D;
+  color: #fff;
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-size: 0.95rem;
 }
 
-.App-link {
-  color: #61dafb;
+.brand-title {
+  font-weight: 800;
+  font-size: 1.15rem;
+  letter-spacing: 0.8px;
+  color: #12102B;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.exact-nav-link {
+  color: #555271;
+  font-weight: 500;
+  font-size: 0.92rem;
+  padding: 6px 14px;
+  transition: color 0.2s;
+  cursor: pointer;
+}
+
+.exact-nav-link:hover {
+  color: var(--primary);
+}
+
+.btn-open-safety-hub {
+  background: var(--primary);
+  color: #fff !important;
+  font-weight: 600;
+  font-size: 0.88rem;
+  padding: 9px 20px;
+  border-radius: 12px;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 4px 14px rgba(99, 85, 230, 0.28);
+  transition: all 0.2s ease;
+}
+
+.btn-open-safety-hub:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(99, 85, 230, 0.35);
+}
+
+/* ================= Hero Section ================= */
+.exact-hero {
+  padding: 70px 0 60px;
+  position: relative;
+  background: var(--bg-page);
+  transition: background-color 0.25s ease;
+}
+
+.hero-pill-tag {
+  color: #6355E6;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  margin-bottom: 22px;
+  display: inline-block;
+}
+
+.exact-hero-h1 {
+  font-size: clamp(2.4rem, 4.4vw, 3.8rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: #12102B;
+  letter-spacing: -0.8px;
+  margin-bottom: 24px;
+}
+
+.exact-hero-h1 .highlight-purple {
+  color: #6355E6;
+}
+
+.hero-desc {
+  font-size: 1.05rem;
+  color: #555271;
+  line-height: 1.65;
+  max-width: 520px;
+  margin-bottom: 34px;
+}
+
+.btn-explore-tools {
+  background: var(--primary);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 13px 26px;
+  border-radius: 12px;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 6px 18px rgba(99, 85, 230, 0.26);
+  transition: all 0.2s;
+}
+
+.btn-explore-tools:hover {
+  background: var(--primary-hover);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.link-discover-community {
+  color: #12102B;
+  font-weight: 600;
+  font-size: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  transition: all 0.2s;
+}
+
+.link-discover-community:hover {
+  color: var(--primary);
+  transform: translateX(3px);
+}
+
+.private-guarantee {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #716E8C;
+  font-size: 0.85rem;
+  margin-top: 26px;
+}
+
+.private-guarantee-icon {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1.5px solid #8E8BA7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  color: #6355E6;
+}
+
+/* Poster Artwork — all hidden, image only shown */
+.hero-poster-frame,
+.hero-poster-border-card,
+.hero-poster-art,
+.poster-bg-texture,
+.poster-empower,
+.poster-her,
+.poster-unstoppable,
+.hero-floating-chip-top,
+.hero-floating-chip-bottom,
+.chip-icon-box,
+.chip-title,
+.chip-subtitle {
+  display: none !important;
+}
+
+/* Hero col right side — force transparent, no bg */
+.exact-hero .col-12.col-lg-6 {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+
+
+
+
+/* Floating chips on Hero Image — hidden */
+.hero-floating-chip-top,
+.hero-floating-chip-bottom {
+  display: none !important;
+}
+
+/* Kill any absolute-positioned overlay inside hero poster frame */
+.hero-poster-frame > div {
+  display: none !important;
+}
+.hero-poster-frame > img {
+  display: block !important;
+}
+
+.chip-icon-box {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: #F0EDFE;
+  color: #6355E6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+}
+
+.chip-title {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: #12102B;
+  line-height: 1.2;
+}
+
+.chip-subtitle {
+  font-size: 0.72rem;
+  color: #716E8C;
+}
+
+/* ================= Next Step Quick Cards ================= */
+.next-step-section {
+  padding: 40px 0 70px;
+  background: var(--bg-page);
+  border-top: 1px solid var(--border-light);
+  transition: background-color 0.25s ease;
+}
+
+.next-step-tag {
+  color: #8E8BA7;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.quick-action-card {
+  background: #FFFFFF;
+  border: 1px solid #E9E7F2;
+  border-radius: 16px;
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  height: 100%;
+}
+
+.quick-action-card:hover {
+  transform: translateY(-2px);
+  border-color: #D5CEFD;
+  box-shadow: 0 8px 20px rgba(99, 85, 230, 0.08);
+}
+
+.quick-action-card.emergency-highlight {
+  border-color: #FCD5D5;
+  background: #FFFBFB;
+}
+
+.badge-quick-num {
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: #EF4444;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: #FEE2E2;
+}
+
+.badge-quick-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: #F0EDFE;
+  color: #6355E6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+}
+
+.quick-card-title {
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: #12102B;
+  margin-bottom: 2px;
+}
+
+.quick-card-sub {
+  font-size: 0.78rem;
+  color: #716E8C;
+}
+
+.quick-card-arrow {
+  color: #8E8BA7;
+  font-size: 0.85rem;
+  margin-left: auto;
+  transition: transform 0.2s;
+}
+
+.quick-action-card:hover .quick-card-arrow {
+  color: #6355E6;
+  transform: translate(2px, -2px);
+}
+
+/* ================= Toolkit Section ================= */
+.toolkit-section {
+  padding: 80px 0 90px;
+  background: var(--bg-page);
+  border-top: 1px solid var(--border-light);
+  transition: background-color 0.25s ease;
+}
+
+.section-eyebrow {
+  color: #6355E6;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.toolkit-header-title {
+  font-size: clamp(2rem, 3.5vw, 2.7rem);
+  font-weight: 800;
+  color: #12102B;
+  letter-spacing: -0.5px;
+}
+
+.toolkit-tabs {
+  display: flex;
+  gap: 24px;
+  margin: 32px 0 40px;
+  border-bottom: 1px solid #ECEAF5;
+  padding-bottom: 12px;
+}
+
+.toolkit-tab-btn {
+  background: none;
+  border: none;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #716E8C;
+  padding: 6px 4px;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.2s;
+}
+
+.toolkit-tab-btn.active {
+  color: #6355E6;
+}
+
+.toolkit-tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -13px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #6355E6;
+  border-radius: 2px;
+}
+
+.toolkit-card {
+  background: #FFFFFF;
+  border: 1px solid #E9E7F2;
+  border-radius: 20px;
+  padding: 28px 24px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.25s ease;
+}
+
+.toolkit-card:hover {
+  transform: translateY(-4px);
+  border-color: #D5CEFD;
+  box-shadow: 0 14px 30px rgba(99, 85, 230, 0.08);
+}
+
+.tool-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.tool-icon-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: #F0EDFE;
+  color: #6355E6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+.tool-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  text-transform: uppercase;
+}
+
+.badge-demo {
+  background: #F0EDFE;
+  color: #6355E6;
+}
+
+.badge-simulated {
+  background: #F1F5F9;
+  color: #64748B;
+}
+
+.tool-title {
+  font-size: 1.12rem;
+  font-weight: 700;
+  color: #12102B;
+  margin-bottom: 10px;
+}
+
+.tool-desc {
+  font-size: 0.88rem;
+  color: #555271;
+  line-height: 1.6;
+  margin-bottom: 24px;
+  flex-grow: 1;
+}
+
+.tool-link {
+  color: #6355E6;
+  font-weight: 600;
+  font-size: 0.88rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: gap 0.2s;
+}
+
+.tool-link:hover {
+  gap: 10px;
+}
+
+/* ================= The Learning Circle (Dark Banner) ================= */
+.learning-circle-banner {
+  background: #140E2D;
+  border-radius: 28px;
+  padding: 70px 60px;
+  color: #FFFFFF;
+  margin: 30px 0 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.lc-tag {
+  color: #E03577;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  display: block;
+}
+
+.lc-title {
+  font-size: clamp(2rem, 3.6vw, 3rem);
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  letter-spacing: -0.5px;
+}
+
+.lc-desc {
+  font-size: 1.05rem;
+  color: #B2AECB;
+  line-height: 1.65;
+  margin-bottom: 34px;
+  max-width: 480px;
+}
+
+.btn-community-pulse {
+  background: #FFFFFF;
+  color: #140E2D;
+  font-weight: 700;
+  font-size: 0.92rem;
+  padding: 12px 24px;
+  border-radius: 12px;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s;
+}
+
+.btn-community-pulse:hover {
+  background: #F0EDFE;
+  color: #6355E6;
+  transform: translateY(-2px);
+}
+
+.lc-divider {
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+  height: 100%;
+  padding-left: 50px;
+}
+
+.lc-item {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 34px;
+}
+
+.lc-item:last-child {
+  margin-bottom: 0;
+}
+
+.lc-num {
+  color: #8E8BA7;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding-top: 2px;
+}
+
+.lc-item-title {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #FFFFFF;
+  margin-bottom: 4px;
+}
+
+.lc-item-sub {
+  color: #8E8BA7;
+  font-size: 0.88rem;
+}
+
+/* ================= Urgent Numbers Section ================= */
+.urgent-support-section {
+  padding: 60px 0 100px;
+}
+
+.urgent-tag {
+  color: #6355E6;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  display: block;
+}
+
+.urgent-title {
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 800;
+  color: #12102B;
+  margin-bottom: 16px;
+  letter-spacing: -0.5px;
+}
+
+.urgent-desc {
+  font-size: 1rem;
+  color: #555271;
+  line-height: 1.65;
+  max-width: 440px;
+}
+
+.urgent-num-card {
+  background: #FFFFFF;
+  border: 1px solid #E9E7F2;
+  border-radius: 16px;
+  padding: 20px 26px;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  transition: all 0.2s;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.urgent-num-card:hover {
+  border-color: #D5CEFD;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(99, 85, 230, 0.08);
+}
+
+.urgent-dial-num {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #6355E6;
+  min-width: 60px;
+}
+
+.urgent-dial-title {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #12102B;
+}
+
+/* ================= Footer ================= */
+.exact-footer {
+  background: #FFFFFF;
+  border-top: 1px solid #ECEAF5;
+  padding: 40px 0 50px;
+  font-size: 0.88rem;
+  color: #716E8C;
+}
+
+.footer-nav-link {
+  color: #555271;
+  margin-left: 24px;
+  transition: color 0.2s;
+}
+
+.footer-nav-link:hover {
+  color: #6355E6;
+}
+
+/* ================= Modal Styling ================= */
+.custom-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(18, 16, 43, 0.6);
+  backdrop-filter: blur(6px);
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.custom-modal-card {
+  background: #FFFFFF;
+  border-radius: 24px;
+  width: 100%;
+  max-width: 540px;
+  padding: 34px;
+  box-shadow: 0 25px 60px rgba(18, 16, 43, 0.2);
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+@media (max-width: 991px) {
+  .lc-divider {
+    border-left: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    padding-left: 0;
+    padding-top: 40px;
+    margin-top: 40px;
   }
-  to {
-    transform: rotate(360deg);
+  .learning-circle-banner {
+    padding: 40px 30px;
   }
+}
+
+/* ── Home Page Container ── */
+.home-page-container {
+  background-color: var(--bg-page);
+  min-height: 100vh;
+  transition: background-color 0.25s ease;
+}
+
+/* ================= Dark Mode Theme ================= */
+[data-theme="dark"] {
+  --primary: #8677FF;
+  --primary-hover: #9B8DFF;
+  --primary-light: #241A4C;
+  --text-dark: #F5F4FD;
+  --text-muted: #B7B3D2;
+  --text-light: #8E8BA7;
+  --bg-page: #0A0618;
+  --bg-card: #140E2D;
+  --border-light: #281F4B;
+  --purple-dark-banner: #090517;
+}
+
+/* ── 1. Global Dark Mode Canvas ── */
+body.dark-theme {
+  background-color: #0A0618 !important;
+  color: #F5F4FD !important;
+}
+
+body.dark-theme #root,
+body.dark-theme main {
+  background-color: #0A0618 !important;
+  color: #EDEAF8 !important;
+}
+
+/* ── 1. Global Universal Page & Container Dark Theme ── */
+body.dark-theme,
+[data-theme="dark"],
+body.dark-theme #root,
+body.dark-theme main,
+body.dark-theme div[style*="#FDFDFE" i],
+body.dark-theme div[style*="#fdfdfe" i],
+body.dark-theme div[style*="rgb(253, 253, 254)"],
+body.dark-theme section[style*="#FDFDFE" i],
+body.dark-theme section[style*="#fdfdfe" i],
+body.dark-theme section[style*="rgb(253, 253, 254)"],
+body.dark-theme div[style*="minHeight: '100vh'"],
+body.dark-theme div[style*="min-height: 100vh"] {
+  background-color: #0A0618 !important;
+  color: #EDEAF8 !important;
+}
+
+/* ── 2. Dark Navbar & Footer ── */
+body.dark-theme .exact-nav {
+  background: rgba(12, 8, 26, 0.92) !important;
+  backdrop-filter: blur(12px) !important;
+  border-bottom: 1px solid #281E4E !important;
+}
+
+body.dark-theme .brand-title {
+  color: #FFFFFF !important;
+}
+
+body.dark-theme .brand-badge-logo {
+  background: #251B4F !important;
+  border: 1px solid #3E2F78;
+  box-shadow: 0 0 12px rgba(138, 124, 254, 0.35);
+}
+
+body.dark-theme .exact-nav-link {
+  color: #B5B1CF !important;
+}
+
+body.dark-theme .exact-nav-link:hover {
+  color: #A394FF !important;
+  text-shadow: 0 0 10px rgba(163, 148, 255, 0.4);
+}
+
+body.dark-theme .exact-footer {
+  background-color: #080414 !important;
+  border-top: 1px solid #231B45 !important;
+  color: #B2AECB !important;
+}
+
+body.dark-theme .footer-nav-link {
+  color: #B2AECB !important;
+}
+
+body.dark-theme .footer-nav-link:hover {
+  color: #A394FF !important;
+}
+
+/* ── 3. Cards & Guided Demo Surfaces with Neon Glow ── */
+body.dark-theme .quick-action-card,
+body.dark-theme .toolkit-card,
+body.dark-theme .bg-white,
+body.dark-theme .card,
+body.dark-theme [style*="#ffffff" i],
+body.dark-theme [style*="rgb(255, 255, 255)"],
+body.dark-theme [style*="backgroundColor: '#FFFFFF'"],
+body.dark-theme [style*="background-color: #FFFFFF"],
+body.dark-theme [style*="background: #FFFFFF"] {
+  background-color: #171136 !important;
+  border-color: #2D2357 !important;
+  color: #EDEAF8 !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── 3b. Quick-Action Card Inner Text & Icons (Next-Step section) ── */
+body.dark-theme .quick-card-title {
+  color: #EDEAF8 !important;
+}
+
+body.dark-theme .quick-card-sub {
+  color: #A09CC0 !important;
+}
+
+body.dark-theme .quick-card-arrow {
+  color: #7B78A8 !important;
+}
+
+body.dark-theme .quick-action-card:hover .quick-card-arrow {
+  color: #A394FF !important;
+}
+
+body.dark-theme .badge-quick-icon {
+  background: #2D2357 !important;
+  color: #A394FF !important;
+}
+
+body.dark-theme .badge-quick-num {
+  background: #3B1212 !important;
+  color: #FF8080 !important;
+}
+
+body.dark-theme .quick-action-card.emergency-highlight {
+  background-color: #1A0E1E !important;
+  border-color: #4A1E1E !important;
+}
+
+body.dark-theme .next-step-tag {
+  color: #7B78A8 !important;
+  letter-spacing: 0.08em;
+}
+
+/* ── 4. HOVER GLOW EFFECT (Rich violet/neon purple aura) ── */
+body.dark-theme .quick-action-card:hover,
+body.dark-theme .toolkit-card:hover,
+body.dark-theme .urgent-num-card:hover,
+body.dark-theme .col-12.col-md-6 > div[style*="border"]:hover,
+body.dark-theme div[style*="border-radius: 20px"]:hover,
+body.dark-theme div[style*="border-radius: 24px"]:hover,
+body.dark-theme div[style*="borderRadius: 20"]:hover,
+body.dark-theme div[style*="borderRadius: 24"]:hover {
+  background-color: #1A123A !important;
+  border-color: #9887FE !important;
+  box-shadow: 0 0 25px rgba(152, 135, 254, 0.45), 0 8px 30px rgba(99, 85, 230, 0.3) !important;
+  transform: translateY(-3px);
+}
+
+/* Buttons Glow on Hover */
+body.dark-theme .btn-primary:hover,
+body.dark-theme .btn-explore-tools:hover,
+body.dark-theme .btn-open-safety-hub:hover,
+body.dark-theme button[style*="background-color: #6355E6"]:hover,
+body.dark-theme button[style*="backgroundColor: '#6355E6'"]:hover {
+  box-shadow: 0 0 25px rgba(152, 135, 254, 0.6), 0 0 50px rgba(99, 85, 230, 0.4) !important;
+  border-color: #B4A7FF !important;
+  transform: translateY(-2px);
+}
+
+/* ── 5. Inner Preview Boxes, Sidestrips & Sub-cards ── */
+body.dark-theme div[style*="#F5F3FF"],
+body.dark-theme div[style*="#F4F1FE"],
+body.dark-theme div[style*="#F5F2FE"],
+body.dark-theme div[style*="#F8F7FD"],
+body.dark-theme div[style*="#FAFAFD"],
+body.dark-theme div[style*="#FAFCFA"],
+body.dark-theme div[style*="#F3F0FF"],
+body.dark-theme div[style*="#F6F4FE"],
+body.dark-theme div[style*="#EDE8FE"],
+body.dark-theme section[style*="#F8F7FD"] {
+  background-color: #1B133A !important;
+  border-color: #312461 !important;
+  color: #E6E2FF !important;
+}
+
+body.dark-theme div[style*="#F5F3FF"]:hover,
+body.dark-theme div[style*="#F8F7FD"]:hover {
+  border-color: #7967FD !important;
+  box-shadow: 0 0 16px rgba(121, 103, 253, 0.25) !important;
+}
+
+/* ── 6. Typography Overrides in Dark Mode ── */
+body.dark-theme h1,
+body.dark-theme h2,
+body.dark-theme h3,
+body.dark-theme h4,
+body.dark-theme h5,
+body.dark-theme h6,
+body.dark-theme [style*="color: #160D33"],
+body.dark-theme [style*="color: #12102B"],
+body.dark-theme [style*="color: #140E2D"],
+body.dark-theme [style*="color: rgb(22, 13, 51)"],
+body.dark-theme [style*="color: rgb(18, 16, 43)"] {
+  color: #FFFFFF !important;
+}
+
+body.dark-theme p,
+body.dark-theme span[style*="color: #65607E"],
+body.dark-theme span[style*="color: #555271"],
+body.dark-theme span[style*="color: #7E7A97"],
+body.dark-theme span[style*="color: #8E8BA7"],
+body.dark-theme span[style*="color: #5E5B7A"],
+body.dark-theme [style*="color: rgb(101, 96, 126)"],
+body.dark-theme [style*="color: rgb(85, 82, 113)"],
+body.dark-theme .text-muted {
+  color: #C5C0E5 !important;
+}
+
+body.dark-theme small,
+body.dark-theme .small {
+  color: #A9A4CA !important;
+}
+
+/* ── 7. Guidelines (01, 02, 03) Sidebar on Sub-pages ── */
+body.dark-theme .col-12.col-lg-4 h4 {
+  color: #FFFFFF !important;
+}
+body.dark-theme .col-12.col-lg-4 p {
+  color: #C5C0E5 !important;
+}
+body.dark-theme .col-12.col-lg-4 [style*="color: #9887FE"] {
+  color: #B9ADFF !important;
+  text-shadow: 0 0 8px rgba(185, 173, 255, 0.4);
+}
+
+/* ── 8. Forms, Search Bars & Inputs with Glow ── */
+body.dark-theme input,
+body.dark-theme textarea,
+body.dark-theme select,
+body.dark-theme .form-control,
+body.dark-theme .form-select {
+  background-color: #191238 !important;
+  border-color: #352766 !important;
+  color: #FFFFFF !important;
+  transition: all 0.2s ease;
+}
+
+body.dark-theme input:focus,
+body.dark-theme textarea:focus,
+body.dark-theme select:focus,
+body.dark-theme .form-control:focus,
+body.dark-theme .form-select:focus {
+  background-color: #1F1745 !important;
+  border-color: #9887FE !important;
+  box-shadow: 0 0 18px rgba(152, 135, 254, 0.4) !important;
+  color: #FFFFFF !important;
+  outline: none !important;
+}
+
+body.dark-theme input::placeholder,
+body.dark-theme textarea::placeholder {
+  color: #837D9F !important;
+}
+
+/* ── 9. Tables & Records with Row Glow ── */
+body.dark-theme table {
+  color: #E2DFFA !important;
+  border-color: #2D2357 !important;
+}
+
+body.dark-theme table thead th {
+  background-color: #191238 !important;
+  color: #B5B1CF !important;
+  border-color: #2D2357 !important;
+}
+
+body.dark-theme table tbody tr {
+  border-color: #261D4C !important;
+  transition: all 0.2s;
+}
+
+body.dark-theme table tbody tr:hover {
+  background-color: rgba(152, 135, 254, 0.12) !important;
+  box-shadow: 0 0 15px rgba(152, 135, 254, 0.18) !important;
+}
+
+/* ── 10. Modals & Popups with Neon Backdrop Glow ── */
+body.dark-theme .custom-modal-card {
+  background: #171136 !important;
+  border: 1px solid #3F2F76 !important;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 35px rgba(138, 124, 254, 0.3) !important;
+  color: #FFFFFF !important;
+}
+
+body.dark-theme div[style*="boxShadow: '0 20px 40px rgba(0,0,0,0.2)'"],
+body.dark-theme div[style*="box-shadow: 0 20px 40px rgba(0,0,0,0.2)"] {
+  background-color: #171136 !important;
+  border: 1px solid #3F2F76 !important;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 30px rgba(138, 124, 254, 0.3) !important;
+}
+
+/* ── 11. Tabs, Chips & Filter Buttons ── */
+body.dark-theme .toolkit-tab {
+  color: #B5B1CF !important;
+}
+
+body.dark-theme .toolkit-tab.active {
+  background-color: #291F56 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 0 16px rgba(138, 124, 254, 0.35);
+}
+
+body.dark-theme button[style*="borderColor"]:hover {
+  border-color: #9887FE !important;
+  box-shadow: 0 0 15px rgba(152, 135, 254, 0.35);
+}
+
+/* ── 12. Urgent Numbers Cards & Emergency Section ── */
+body.dark-theme .urgent-support-section {
+  background-color: #100A24 !important;
+  border-top: 1px solid #231B45 !important;
+}
+
+body.dark-theme .urgent-num-card {
+  background-color: #1A1238 !important;
+  border-color: #2E235C !important;
+  transition: all 0.25s ease;
+}
+
+body.dark-theme .urgent-num-card:hover {
+  background-color: #23184A !important;
+  border-color: #8A7CFE !important;
+  box-shadow: 0 0 22px rgba(138, 124, 254, 0.4) !important;
+}
+
+/* ── 13. Theme Toggle Button ── */
+.theme-toggle-btn {
+  background: rgba(152, 135, 254, 0.1);
+  border: 1px solid rgba(152, 135, 254, 0.22);
+  color: #555271;
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.theme-toggle-btn:hover {
+  background: rgba(152, 135, 254, 0.22);
+  color: #6355E6;
+  transform: translateY(-1px);
+  box-shadow: 0 0 14px rgba(99, 85, 230, 0.35);
+}
+
+body.dark-theme .theme-toggle-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #F8D849;
+}
+
+body.dark-theme .theme-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #FFE66D;
+  box-shadow: 0 0 18px rgba(254, 222, 85, 0.45);
+}
+
+
+
+/* ── 14. Hero, Toolkit, Next-Step Sections (Home page) ── */
+body.dark-theme .exact-hero {
+  background-color: #0A0618 !important;
+}
+body.dark-theme .toolkit-section {
+  background-color: #0A0618 !important;
+}
+body.dark-theme .next-step-section {
+  background-color: #0A0618 !important;
+}
+body.dark-theme .home-page-container {
+  background-color: #0A0618 !important;
+}
+
+/* Hero text colors */
+body.dark-theme .hero-pill-tag {
+  color: #A394FF !important;
+}
+body.dark-theme .exact-hero-h1 {
+  color: #FFFFFF !important;
+}
+body.dark-theme .hero-desc {
+  color: #C5C0E5 !important;
+}
+body.dark-theme .link-discover-community {
+  color: #A394FF !important;
+}
+body.dark-theme .section-eyebrow {
+  color: #A394FF !important;
+}
+body.dark-theme .toolkit-header-title {
+  color: #FFFFFF !important;
+}
+body.dark-theme .next-step-tag {
+  color: #B5B1CF !important;
+}
+
+/* ── 15. Universal Sub-page White & Tint Card Catchers ── */
+body.dark-theme [style*="#ffffff" i],
+body.dark-theme [style*="#FFFFFF"],
+body.dark-theme [style*="rgb(255, 255, 255)"],
+body.dark-theme [style*="background: '#FFFFFF'"],
+body.dark-theme [style*="background: #FFFFFF"],
+body.dark-theme [style*="background-color: #FFFFFF"],
+body.dark-theme [style*="backgroundColor: '#FFFFFF'"] {
+  background-color: #171136 !important;
+  border-color: #2D2357 !important;
+  color: #EDEAF8 !important;
+}
+
+/* Light purple tint cards (#F0EDFE, #F5F3FF, #FDFDFF) → dark purple in dark mode */
+body.dark-theme [style*="#f0edfe" i],
+body.dark-theme [style*="#F0EDFE"],
+body.dark-theme [style*="#f5f3ff" i],
+body.dark-theme [style*="#F5F3FF"],
+body.dark-theme [style*="#fdfdff" i],
+body.dark-theme [style*="#FDFDFF"] {
+  background-color: #261B4E !important;
+  border-color: #3C2D6E !important;
+  color: #EDEAF8 !important;
+}
+
+/* Light tint sub-panels (#F8F7FD, #F9F8FD, #ECE7FD, #FAFAFD, #FFF7F7) */
+body.dark-theme [style*="#f8f7fd" i],
+body.dark-theme [style*="#F8F7FD"],
+body.dark-theme [style*="#f9f8fd" i],
+body.dark-theme [style*="#F9F8FD"],
+body.dark-theme [style*="#fff7f7" i],
+body.dark-theme [style*="#FFF7F7"] {
+  background-color: #1F1542 !important;
+  border-color: #352668 !important;
+  color: #EDEAF8 !important;
+}
+
+/* Light border overrides */
+body.dark-theme [style*="#ECECF2" i],
+body.dark-theme [style*="#ECE7FD" i],
+body.dark-theme [style*="#D5CEFD" i] {
+  border-color: #352668 !important;
+}
+
+/* Text color fixes for dark mode */
+body.dark-theme [style*="color: #160D33" i],
+body.dark-theme [style*="color: #160d33" i],
+body.dark-theme [style*="color: rgb(22, 13, 51)"],
+body.dark-theme [style*="color: #281F4B" i],
+body.dark-theme [style*="color: #281f4b" i],
+body.dark-theme [style*="color: rgb(40, 31, 75)"],
+body.dark-theme [style*="color: #12102B" i] {
+  color: #EDEAF8 !important;
+}
+
+body.dark-theme [style*="color: #65607E" i],
+body.dark-theme [style*="color: #716E8C" i],
+body.dark-theme [style*="color: #8E8BA7" i],
+body.dark-theme [style*="color: #555271" i] {
+  color: #B5B1CF !important;
+}
+
+/* Active-state selected tab/button in dark (was #F0EDFE / light purple) */
+body.dark-theme button[style*="background: '#F0EDFE'"],
+body.dark-theme button[style*="background: #F0EDFE"],
+body.dark-theme button[style*="background-color: '#F0EDFE'"],
+body.dark-theme button[style*="background-color: #F0EDFE"] {
+  background-color: #3A2B6E !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 0 14px rgba(138, 124, 254, 0.4) !important;
+}
+
+/* White background buttons becoming dark */
+body.dark-theme button[style*="background: '#FFFFFF'"],
+body.dark-theme button[style*="background: #FFFFFF"],
+body.dark-theme button[style*="background-color: '#FFFFFF'"],
+body.dark-theme button[style*="background-color: #FFFFFF"],
+body.dark-theme button[style*="background-color: rgb(255, 255, 255)"] {
+  background-color: #1E1540 !important;
+  color: #EDEAF8 !important;
+  border-color: #3A2B6E !important;
+}
+
+/* Pre-formatted code / monospace SMS preview blocks */
+body.dark-theme [style*="fontFamily: 'monospace'"],
+body.dark-theme [style*="font-family: monospace"] {
+  background-color: #140C2E !important;
+  border-color: #3A2A70 !important;
+  color: #C5BAF8 !important;
+}
+
+/* Form inputs & select dropdowns */
+body.dark-theme input.form-control,
+body.dark-theme select.form-select,
+body.dark-theme textarea.form-control {
+  background-color: #1A1035 !important;
+  border-color: #3A2B6E !important;
+  color: #FFFFFF !important;
+}
+
+body.dark-theme .input-group-text {
+  background-color: #271B55 !important;
+  border-color: #3A2B6E !important;
+  color: #C9C0F0 !important;
+}
+
+/* About section on Home page (#FFFFFF bg) */
+body.dark-theme section[style*="background-color: '#FFFFFF'"],
+body.dark-theme section[style*="background-color: #FFFFFF"],
+body.dark-theme section[style*="background: '#FFFFFF'"],
+body.dark-theme section[style*="background: #FFFFFF"] {
+  background-color: #0D0820 !important;
+  border-color: #281F4B !important;
+  color: #EDEAF8 !important;
+}
+
+/* ── 16. Sub-page text inside dark inline cards ── */
+body.dark-theme div[style*="background: #140E2D"] h1,
+body.dark-theme div[style*="background: #140E2D"] h2,
+body.dark-theme div[style*="background: #140E2D"] h3,
+body.dark-theme div[style*="background: #140E2D"] p {
+  color: #EDEAF8 !important;
+}
+
+/* ── 17. Hover glow on sub-page inline cards ── */
+body.dark-theme div[style*="background: '#FFFFFF'"]:hover,
+body.dark-theme div[style*="background: #FFFFFF"]:hover,
+body.dark-theme div[style*="background-color: #FFFFFF"]:hover,
+body.dark-theme div[style*="background-color: '#FFFFFF'"]:hover {
+  box-shadow: 0 0 24px rgba(138, 124, 254, 0.45) !important;
+  border-color: #8A7CFE !important;
+  transform: translateY(-2px);
+}
+
+/* ── 18. IncidentTimeline page inline styles ── */
+body.dark-theme .incident-timeline-page,
+body.dark-theme [class*="incident-timeline"] {
+  background-color: #0A0618 !important;
+  color: #EDEAF8 !important;
+}
+
+/* ── 19. Sign-in page ── */
+body.dark-theme div[style*="minHeight: '80vh'"],
+body.dark-theme div[style*="minHeight: '85vh'"] {
+  background-color: #0A0618 !important;
+}
+
+/* ── 20. CyberFIR & EvidenceOrganizer ── */
+body.dark-theme div[style*="border-radius"][style*="border: '1px solid #ECECF2'"],
+body.dark-theme div[style*="borderRadius"][style*="border: '1px solid #ECECF2'"] {
+  background-color: #171136 !important;
+  border-color: #2D2357 !important;
+}
+
+/* Safety Hub directory white cards */
+body.dark-theme .safety-hub-card {
+  background-color: #171136 !important;
+  border-color: #2D2357 !important;
+  color: #EDEAF8 !important;
+}
+body.dark-theme .safety-hub-card:hover {
+  box-shadow: 0 0 22px rgba(138, 124, 254, 0.4) !important;
+  border-color: #8A7CFE !important;
+}
+
+
+/* ── Hero image column — no white bg ── */
+.exact-hero .col-12.col-lg-6 {
+  background: transparent !important;
+}
+
+/* ── About Mission Section ── */
+.about-mission-section {
+  background-color: #FFFFFF;
+  transition: background-color 0.25s ease;
+}
+
+body.dark-theme .about-mission-section {
+  background-color: #0D0820 !important;
+  border-color: #281F4B !important;
+}
+
+/* About section checklist card */
+.about-checklist-card {
+  background-color: #F8F7FD;
+  transition: background-color 0.25s ease;
+}
+
+body.dark-theme .about-checklist-card {
+  background-color: #1A1238 !important;
+  border-color: #2D2357 !important;
+}
+
+body.dark-theme .about-checklist-card strong {
+  color: #EDEAF8 !important;
+}
+
+body.dark-theme .about-mission-section h2 {
+  color: #FFFFFF !important;
+}
+
+body.dark-theme .about-mission-section p {
+  color: #B5B1CF !important;
+}
+
+
+/* ── Deepfake Forensics Page Dark Mode Overrides ── */
+body.dark-theme .deepfake-card {
+  background-color: #171136 !important;
+  border-color: #2D2357 !important;
+  color: #EDEAF8 !important;
+}
+
+body.dark-theme .deepfake-card h5,
+body.dark-theme .deepfake-card h4,
+body.dark-theme .deepfake-card h3 {
+  color: #FFFFFF !important;
+}
+
+body.dark-theme .deepfake-card p,
+body.dark-theme .deepfake-card li span {
+  color: #C5C0E5 !important;
+}
+
+/* ── Route Deviation Tracker Dark Mode ── */
+body.dark-theme .route-tracker-card {
+  background-color: #171136 !important;
+  border-color: #2D2357 !important;
+  color: #EDEAF8 !important;
+}
+
+
+/* HerScan 360 AI Vision Laser Scanning Animation */
+@keyframes scanLaser {
+  0% { top: 0%; opacity: 0.8; }
+  50% { top: 96%; opacity: 1; }
+  100% { top: 0%; opacity: 0.8; }
+}
+
+.spin {
+  animation: rotateSpin 1s linear infinite;
+}
+
+@keyframes rotateSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+
+/* Navbar SOS Bell Ring & Pulse Animation */
+@keyframes sosRing {
+  0% { transform: rotate(0); }
+  20% { transform: rotate(15deg); }
+  40% { transform: rotate(-15deg); }
+  60% { transform: rotate(10deg); }
+  80% { transform: rotate(-10deg); }
+  100% { transform: rotate(0); }
 }
