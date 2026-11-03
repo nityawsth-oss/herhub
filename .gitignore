@@ -20,6 +20,8 @@
 .env.production.local
 __pycache__/
 *.pyc
+~$*
+*.pptx
 
 npm-debug.log*
 yarn-debug.log*
