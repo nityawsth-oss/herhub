@@ -7,7 +7,7 @@ import {
 
 function AIGuardianCallPage() {
   const [callState, setCallState] = useState('idle'); // 'idle' | 'ringing' | 'connected'
-  const [callerName, setCallerName] = useState('Mom');
+  const [callerName, setCallerName] = useState('Papa');
   const [callTimer, setCallTimer] = useState(0);
   const [isMuted, setIsMuted] = useState(false);
   const [speakerOn, setSpeakerOn] = useState(true);
@@ -21,9 +21,10 @@ function AIGuardianCallPage() {
   const ringOscillatorRef = useRef(null);
   const ringIntervalRef = useRef(null);
 
-  // Authentic recorded voice for Brother (Rahul) & Mom
+  // Authentic recorded voice for Brother (Rahul), Mom & Papa
   const brotherAudioRef = useRef(null);
   const momAudioRef = useRef(null);
+  const papaAudioRef = useRef(null);
 
   useEffect(() => {
     const audio = new Audio('/brother_guardian_call.ogg');
@@ -34,6 +35,10 @@ function AIGuardianCallPage() {
     momAudio.preload = 'auto';
     momAudioRef.current = momAudio;
 
+    const papaAudio = new Audio('/papa_guardian_call.ogg');
+    papaAudio.preload = 'auto';
+    papaAudioRef.current = papaAudio;
+
     return () => {
       if (brotherAudioRef.current) {
         brotherAudioRef.current.pause();
@@ -43,8 +48,22 @@ function AIGuardianCallPage() {
         momAudioRef.current.pause();
         momAudioRef.current = null;
       }
+      if (papaAudioRef.current) {
+        papaAudioRef.current.pause();
+        papaAudioRef.current = null;
+      }
     };
   }, []);
+
+  // Authentic spoken Hindi transcript from Papa audio recording
+  const papaScript = [
+    "Hello beta... Haan, kahan pahunchi?",
+    "Achha... Kitni der lagegi?",
+    "Theek hai beta, apna location bhej do mujhe...",
+    "...Gaadi ka number bhi message kar dena. Bas tumhari safety ko lekar pooch raha hoon.",
+    "Phone apne paas hi rakhna, aur ghar pahunch kar mujhe bata dena.",
+    "Haan beta, aaram se aana."
+  ];
 
   // Authentic spoken Hindi transcript from Mom audio recording
   const momScript = [
@@ -145,7 +164,7 @@ function AIGuardianCallPage() {
   };
 
   // Trigger Incoming Call
-  const triggerIncomingCall = (name = 'Mom') => {
+  const triggerIncomingCall = (name = 'Papa') => {
     setCallerName(name);
     setCallState('ringing');
     setCallTimer(0);
@@ -160,30 +179,37 @@ function AIGuardianCallPage() {
     setCallTimer(0);
     setTranscriptIndex(0);
 
-    if (callerName.includes('Brother')) {
-      // Play authentic recorded Hindi voice for Rahul (Brother)
-      if (brotherAudioRef.current) {
-        brotherAudioRef.current.currentTime = 0;
-        brotherAudioRef.current.muted = isMuted;
-        brotherAudioRef.current.volume = speakerOn ? 1.0 : 0.5;
-        brotherAudioRef.current.play().catch(e => {
-          console.warn('Audio playback notice:', e);
-          speakLine(brotherScript[0]);
+    if (callerName.includes('Papa')) {
+      // Play authentic recorded Hindi voice for Papa (NEVER fallback to robotic AI speech)
+      const papaAudio = papaAudioRef.current || new Audio((process.env.PUBLIC_URL || '') + '/papa_guardian_call.ogg');
+      papaAudio.currentTime = 0;
+      papaAudio.muted = isMuted;
+      papaAudio.volume = speakerOn ? 1.0 : 0.6;
+      const playPromise = papaAudio.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(e => {
+          console.warn('Audio play notice, retrying:', e);
+          setTimeout(() => papaAudio.play().catch(console.error), 100);
         });
       }
+    } else if (callerName.includes('Brother')) {
+      // Play authentic recorded Hindi voice for Rahul (Brother)
+      const brotherAudio = brotherAudioRef.current || new Audio((process.env.PUBLIC_URL || '') + '/brother_guardian_call.ogg');
+      brotherAudio.currentTime = 0;
+      brotherAudio.muted = isMuted;
+      brotherAudio.volume = speakerOn ? 1.0 : 0.6;
+      brotherAudio.play().catch(e => console.warn('Brother audio notice:', e));
     } else if (callerName.includes('Mom')) {
       // Play authentic recorded Hindi voice for Mom
-      if (momAudioRef.current) {
-        momAudioRef.current.currentTime = 0;
-        momAudioRef.current.muted = isMuted;
-        momAudioRef.current.volume = speakerOn ? 1.0 : 0.5;
-        momAudioRef.current.play().catch(e => {
-          console.warn('Audio playback notice:', e);
-          speakLine(momScript[0]);
-        });
-      }
+      const momAudio = momAudioRef.current || new Audio((process.env.PUBLIC_URL || '') + '/mom_guardian_call.ogg');
+      momAudio.currentTime = 0;
+      momAudioRef.current = momAudio;
+      momAudio.currentTime = 0;
+      momAudio.muted = isMuted;
+      momAudio.volume = speakerOn ? 1.0 : 0.6;
+      momAudio.play().catch(e => console.warn('Mom audio notice:', e));
     } else {
-      // Speak first line immediately via SpeechSynthesis for others
+      // Speak first line immediately via SpeechSynthesis for custom personas
       speakLine(callScript[0]);
     }
   };
@@ -198,6 +224,10 @@ function AIGuardianCallPage() {
     if (momAudioRef.current) {
       momAudioRef.current.pause();
       momAudioRef.current.currentTime = 0;
+    }
+    if (papaAudioRef.current) {
+      papaAudioRef.current.pause();
+      papaAudioRef.current.currentTime = 0;
     }
     if ('speechSynthesis' in window) {
       window.speechSynthesis.cancel();
@@ -226,6 +256,13 @@ function AIGuardianCallPage() {
             else if (next === 12) setTranscriptIndex(2);
             else if (next === 19) setTranscriptIndex(3);
             else if (next === 26) setTranscriptIndex(4);
+          } else if (callerName.includes('Papa')) {
+            // Synchronize transcript bubble with Papa's authentic voice
+            if (next === 5) setTranscriptIndex(1);
+            else if (next === 10) setTranscriptIndex(2);
+            else if (next === 16) setTranscriptIndex(3);
+            else if (next === 23) setTranscriptIndex(4);
+            else if (next === 30) setTranscriptIndex(5);
           } else {
             // Progress through speech synthesis script every 6-8 seconds
             if (next === 6 && callScript[1]) {
@@ -261,6 +298,10 @@ function AIGuardianCallPage() {
       if (momAudioRef.current) {
         momAudioRef.current.pause();
         momAudioRef.current = null;
+      }
+      if (papaAudioRef.current) {
+        papaAudioRef.current.pause();
+        papaAudioRef.current = null;
       }
       if ('speechSynthesis' in window) window.speechSynthesis.cancel();
     };
@@ -406,9 +447,9 @@ function AIGuardianCallPage() {
               {/* Caller Selection Cards */}
               <div className="d-flex flex-column gap-3 mb-4">
                 {[
-                  { name: 'Mom', phone: '+91 75240 72395', icon: '👩', sub: 'Urgent family pickup check-in' },
-                  { name: 'Rahul (Brother)', phone: '+91 91234 56789', icon: '👦', sub: 'Checking live location and ride safety' },
-                  { name: 'Papa', phone: '+91 98110 12345', icon: '👨', sub: 'Checking your exact live GPS stop' }
+                  { name: 'Papa', phone: '+91 75240 72395', icon: '👨', sub: 'Primary Guardian (Authentic Recorded Voice)' },
+                  { name: 'Mom', phone: '+91 98110 12345', icon: '👩', sub: 'Urgent family pickup check-in' },
+                  { name: 'Rahul (Brother)', phone: '+91 91234 56789', icon: '👦', sub: 'Checking live location and ride safety' }
                 ].map(c => (
                   <div
                     key={c.name}
@@ -653,7 +694,7 @@ function AIGuardianCallPage() {
                           🗣️ {callerName} Speaking:
                         </span>
                       </div>
-                      <em>"{(callerName.includes('Brother') ? brotherScript : callerName.includes('Mom') ? momScript : callScript)[transcriptIndex] || ''}"</em>
+                      <em>"{(callerName.includes('Brother') ? brotherScript : callerName.includes('Mom') ? momScript : callerName.includes('Papa') ? papaScript : callScript)[transcriptIndex] || ''}"</em>
                     </div>
 
                     {/* Smartphone In-Call Grid (Mute, Keypad, Speaker, Video, etc.) */}
@@ -669,6 +710,9 @@ function AIGuardianCallPage() {
                               }
                               if (momAudioRef.current) {
                                 momAudioRef.current.muted = next;
+                              }
+                              if (papaAudioRef.current) {
+                                papaAudioRef.current.muted = next;
                               }
                             }}
                             style={{
@@ -708,6 +752,9 @@ function AIGuardianCallPage() {
                               }
                               if (momAudioRef.current) {
                                 momAudioRef.current.volume = next ? 1.0 : 0.4;
+                              }
+                              if (papaAudioRef.current) {
+                                papaAudioRef.current.volume = next ? 1.0 : 0.4;
                               }
                             }}
                             style={{
@@ -788,6 +835,23 @@ function AIGuardianCallPage() {
           </div>
         </div>
       </section>
+
+      {/* Hidden Native Audio Players for 100% Reliable Cross-Browser & Deployed Playback */}
+      <audio 
+        ref={papaAudioRef} 
+        src={(process.env.PUBLIC_URL || '') + '/papa_guardian_call.ogg'} 
+        preload="auto" 
+      />
+      <audio 
+        ref={brotherAudioRef} 
+        src={(process.env.PUBLIC_URL || '') + '/brother_guardian_call.ogg'} 
+        preload="auto" 
+      />
+      <audio 
+        ref={momAudioRef} 
+        src={(process.env.PUBLIC_URL || '') + '/mom_guardian_call.ogg'} 
+        preload="auto" 
+      />
 
     </div>
   );

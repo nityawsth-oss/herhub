@@ -4,7 +4,7 @@ import { createClient } from '@supabase/supabase-js';
 const supabaseUrl = process.env.REACT_APP_SUPABASE_URL || '';
 const supabaseAnonKey = process.env.REACT_APP_SUPABASE_ANON_KEY || '';
 
-// Detect if valid user credentials are plugged in
+// Detect if valid  user credentials are plugged in
 export const isSupabaseConfigured = () => {
   return (
     Boolean(supabaseUrl) &&
